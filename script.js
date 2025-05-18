@@ -1,3 +1,27 @@
+function welcomeMessage() {
+  alert("🎉 Welcome to Mood Music Registration!");
+}
+
+function validateRegister() {
+  var name = document.getElementById("name").value;
+  var email = document.getElementById("email").value;
+  var pass = document.getElementById("pass").value;
+  var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!name || !email || !pass) {
+    alert("All fields are mandatory!");
+    return false;
+  } else if (!emailPattern.test(email)) {
+    alert("Invalid email format!");
+    return false;
+  } else if (pass.length < 6) {
+    alert("Password must be at least 6 characters!");
+    return false;
+  } else {
+    alert("✅ Registered successfully!");
+    return true;
+  }
+}
 const musicData = {
     happy: [
       { title: "Happy – Pharrell Williams", url: "https://www.youtube.com/watch?v=ZbZSe6N_BXs" },
