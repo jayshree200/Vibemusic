@@ -83,7 +83,7 @@ const toast = document.getElementById("toast");
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     if (button.textContent === "Add Item") {
-      // Change to Added state
+     
       button.textContent = "Added ✅";
       button.style.backgroundColor = "#888";  // gray
       showToast("Your item added.");
