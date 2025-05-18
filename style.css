@@ -18,26 +18,15 @@ header .logo {
   font-weight: bold;
 }
 
-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-
-header nav ul li {
-  cursor: pointer;
-}
-
-/* ✅ Navigation Links */
-nav a {
-  text-decoration: none;
-  color: #d4e9e2; /* light greenish-white */
-  font-weight: bold;
+header nav a {
   margin: 0 10px;
+  text-decoration: none;
+  color: #d4e9e2;
+  font-weight: bold;
   transition: color 0.3s;
 }
 
-nav a:hover {
+header nav a:hover {
   color: #ffffff;
   border-bottom: 2px solid #ffffff;
 }
@@ -56,13 +45,11 @@ h2 {
   color: #333;
 }
 
-/* ✅ Centered Cards */
 .card-row {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: center; /* Center align */
   gap: 20px;
-  padding: 20px;
 }
 
 .card {
@@ -71,7 +58,6 @@ h2 {
   width: 250px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  text-align: center;
 }
 
 .card img {
@@ -99,9 +85,10 @@ h2 {
   color: white;
   border: none;
   padding: 10px 15px;
-  margin: 10px;
+  margin: 10px 0;
   border-radius: 5px;
   cursor: pointer;
+  width: 100%;
 }
 
 .add-button:hover {
@@ -173,4 +160,33 @@ h2 {
   margin-top: 30px;
   font-size: 13px;
   color: #d4e9e2;
+}
+
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #00754a;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.5s, bottom 0.5s;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
+}
+.add-button:disabled {
+  background-color: #888;
+  color: #eee;
+  cursor: not-allowed;
 }
