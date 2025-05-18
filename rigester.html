@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mood Music - Register</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body onload="welcomeMessage()">
+
+  <div class="form-container">
+    <h2>🎶 Register to Mood Music</h2>
+    <p>Join the vibes! Create your account now.</p>
+
+    <form onsubmit="return validateRegister()">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="text" id="email" placeholder="Your Email" required />
+      <input type="password" id="pass" placeholder="Password" required />
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="info-text">
+      Start your musical journey with us and feel the <strong>magic of mood</strong>!<br />
+      Your rhythm, your vibes, your Mood Music. 💜✨
+    </div>
+
+    <div class="emoji-box">
+      🎧 🎼 🎹 🎷 🥁 🎤 🎻
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
