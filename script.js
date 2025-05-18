@@ -1,47 +1,106 @@
-const musicData = {
-    happy: [
-      { title: "Happy – Pharrell Williams", url: "https://www.youtube.com/watch?v=ZbZSe6N_BXs" },
-      { title: "Can't Stop the Feeling!", url: "https://www.youtube.com/watch?v=ru0K8uYEZWw" },
-      { title: "Good Time – Owl City", url: "https://www.youtube.com/watch?v=H7HmzwI67ec" }
-    ],
-    sad: [
-      { title: "Let Her Go – Passenger", url: "https://www.youtube.com/watch?v=RBumgq5yVrA" },
-      { title: "Someone Like You – Adele", url: "https://www.youtube.com/watch?v=hLQl3WQQoQ0" },
-      { title: "Fix You – Coldplay", url: "https://www.youtube.com/watch?v=k4V3Mo61fJM" }
-    ],
-    angry: [
-      { title: "Numb – Linkin Park", url: "https://www.youtube.com/watch?v=kXYiU_JCYtU" },
-      { title: "Believer – Imagine Dragons", url: "https://www.youtube.com/watch?v=7wtfhZwyrcc" },
-      { title: "Stronger – Kanye West", url: "https://www.youtube.com/watch?v=PsO6ZnUZI0g" }
-    ],
-    calm: [
-      { title: "Weightless – Marconi Union", url: "https://www.youtube.com/watch?v=UfcAVejslrU" },
-      { title: "Perfect – Ed Sheeran", url: "https://www.youtube.com/watch?v=2Vv-BfVoq4g" },
-      { title: "River Flows in You – Yiruma", url: "https://www.youtube.com/watch?v=7maJOI3QMu0" }
-    ]
-  };
-  
-  function showMusic(mood) {
-    const musicList = document.getElementById("musicList");
-    musicList.innerHTML = ""; // Clear previous
-  
-    document.body.style.background = getMoodColor(mood);
-  
-    musicData[mood].forEach(music => {
-      const link = document.createElement("a");
-      link.href = music.url;
-      link.target = "_blank";
-      link.textContent = music.title;
-      musicList.appendChild(link);
-    });
+
+// 1️⃣ Console Greeting
+console.log("Welcome to Starbucks Dashboard!");
+
+// 2️⃣ Sidebar Navigation: Active Class Toggle
+const navItems = document.querySelectorAll("aside ul li");
+
+navItems.forEach(item => {
+  item.addEventListener("click", () => {
+    navItems.forEach(el => el.classList.remove("active"));
+    item.classList.add("active");
+  });
+});
+
+// 3️⃣ Greeting Button Function
+function greetUser() {
+  alert("Hello, Jayshree! Welcome to your Starbucks-style Dashboard ☕");
+}
+
+// 4️⃣ Toggle Cards Visibility
+function toggleCards() {
+  const cards = document.querySelector(".cards");
+  cards.style.display = cards.style.display === "none" ? "flex" : "none";
+}
+
+
+// script.js ke andar add karo
+document.querySelectorAll('.menu-card button').forEach(button => {
+  button.addEventListener('click', () => {
+    alert("Item added to cart! ☕");
+  });
+});
+
+
+const loginForm = document.getElementById('loginForm');
+const signupForm = document.getElementById('signupForm');
+const showSignup = document.getElementById('showSignup');
+const showLogin = document.getElementById('showLogin');
+
+showSignup.addEventListener('click', () => {
+  loginForm.classList.add('hidden');
+  signupForm.classList.remove('hidden');
+});
+
+showLogin.addEventListener('click', () => {
+  signupForm.classList.add('hidden');
+  loginForm.classList.remove('hidden');
+});
+
+loginForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // Simple validation + alert
+  const email = loginForm.emailLogin.value.trim();
+  const password = loginForm.passwordLogin.value.trim();
+
+  if(email && password){
+    alert(`Welcome back, ${email}!`);
+    loginForm.reset();
+  } else {
+    alert("Please fill in all fields.");
   }
-  
-  function getMoodColor(mood) {
-    switch (mood) {
-      case "happy": return "#fff7c0";
-      case "sad": return "#c9d6ff";
-      case "angry": return "#ffcccc";
-      case "calm": return "#d0f0c0";
-      default: return "#f3f3f3";
+});
+
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = signupForm.nameSignup.value.trim();
+  const email = signupForm.emailSignup.value.trim();
+  const password = signupForm.passwordSignup.value.trim();
+
+  if(name && email && password){
+    alert(`Account created for ${name}! Please login now.`);
+    signupForm.reset();
+    signupForm.classList.add('hidden');
+    loginForm.classList.remove('hidden');
+  } else {
+    alert("Please fill in all fields.");
+  }
+});
+
+const buttons = document.querySelectorAll(".add-button");
+const toast = document.getElementById("toast");
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    if (button.textContent === "Add Item") {
+      // Change to Added state
+      button.textContent = "Added ✅";
+      button.style.backgroundColor = "#888";  // gray
+      showToast("Your item added.");
+    } else {
+      // Change back to Add state
+      button.textContent = "Add Item";
+      button.style.backgroundColor = "#00754a";  // original green
+      showToast("Your item removed.");
     }
-  }
+  });
+});
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
